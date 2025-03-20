@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 interface NavBarProps{
-    active: "dashboard" | "transactions" | "categories";
+    active: "dashboard" | "movimentações" | "categorias";
 }
 
 export default function NavBar(props: NavBarProps){
@@ -20,9 +20,12 @@ export default function NavBar(props: NavBarProps){
                     FinMoney
                 </h1>
                 <ul className="flex gap-6 text-xl">
-                    <li><Link href="/dashboard">dashboard</Link></li>
-                    <li><Link href="/transactions">movimentações</Link></li>
-                    <li className="border-b-2 border-green-600 pb-3"><Link href="/categories">categorias</Link></li>
+                    {links.map(link => 
+                        <li key={link.label} className={link.label === active? activeClass : ""}>
+                            <Link href={link.link}>{link.label}</Link>
+                        </li>
+                    )}
+
                 </ul>
                 <img className="size-12 rounded-full" src="http://github.com/MarsoL4.png" alt="" />
         </nav>
