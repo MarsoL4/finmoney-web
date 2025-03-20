@@ -3,7 +3,7 @@ import NavBar from "@/components/nav-bar";
 export default function TransactionsPage(){
     return(
         <>
-            <NavBar/>
+            <NavBar active="transactions"/>
 
             <main className="flex items-center justify-center">
                 <div className="bg-slate-900 rounded min-w-2/3 p-6 m-6">

@@ -1,6 +1,19 @@
 import Link from "next/link";
 
-export default function NavBar(){
+interface NavBarProps{
+    active: "dashboard" | "transactions" | "categories";
+}
+
+export default function NavBar(props: NavBarProps){
+    const {active} = props
+    const activeClass = "border-b-2 border-green-600 pb-4"
+
+    const links = [
+        { link: "/dashboard", label: "dashboard" },
+        { link: "/transactions", label: "movimentações" },
+        { link: "/categories", label: "categorias" }
+    ]
+
     return(
         <nav className="flex px-6 pt-6 justify-between bg-slate-900">
                 <h1 className="text-4xl font-bold">
