@@ -1,4 +1,5 @@
 import { Book } from "lucide-react";
+import CrudDropdown from "./crud-dropdown";
 
 export default function CategoryItem(){
     return(
@@ -9,7 +10,7 @@ export default function CategoryItem(){
             </div>
 
             <div>
-                <span>dropdown</span>
+                <CrudDropdown/>
             </div>
         </div>
     )
