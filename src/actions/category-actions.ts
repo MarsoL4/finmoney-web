@@ -1,5 +1,7 @@
 "use server"
 
+import { redirect } from "next/navigation"
+
 const API_URL = "http://localhost:8080/categories"
 
 //Busca todas as Categorias Cadastradas
@@ -24,5 +26,17 @@ export async function createCategory(initialState: any, formData: FormData){
     }
 
     const response = await fetch(API_URL, options)
+
+    //Caso a resposta da API seja bem sucedida, redireciona para a página de Categorias
+    if (!response.ok){
+        return {
+            errors: {
+                name: "nome é obrigatório",
+                icon: "tem que começar com maiúscula"
+            }
+        }
+    }
+
+    redirect("/categories")
 }
 

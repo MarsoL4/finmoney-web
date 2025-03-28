@@ -11,11 +11,18 @@ const initialState = {
     values: {
         name: "",
         icon: ""
+    },
+    errors: {
+        name: "",
+        icon: ""
     }
 }
 
 export default function CategoriesFormPage(){
-    const [state, formAction, pending] = useActionState(createCategory, initialState)
+    const [state, formAction, pending] = useActionState(
+        createCategory, 
+        initialState
+    );
 
     return(
     <>
@@ -26,8 +33,15 @@ export default function CategoriesFormPage(){
                 <h2 className="font-bold">Cadastrar Categoria</h2>
 
                 <form action= {formAction} className="space-y-4 mt-6">
-                    <Input name="name" placeholder="nome da categoria"/>
-                    <Input name="icon" placeholder="ícone"/>
+                    <div>
+                        <Input name="name" placeholder="nome da categoria" aria-invalid={!!state?.errors.name}/>
+                        <span className="text-sm text-destructive">{state?.errors.name}</span>
+                    </div>
+                    
+                    <div>
+                        <Input name="icon" placeholder="nome do ícone" aria-invalid={!!state?.errors.icon}/>
+                        <span className="text-sm text-destructive">{state?.errors.icon}</span>
+                    </div>
 
                     <div className="flex justify-around">
                         <Button variant="outline" asChild>
